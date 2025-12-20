@@ -1,17 +1,24 @@
+import BasicCalculator from "@/components/BasicCalculator";
+import { Card, CardHeader, CardTitle } from "@/components/shadcnui/card";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Nextjs Starter Frontend",
-	description: "Production grade Next.js starter template",
+	title: "calculator-app",
+	description: "Basic Calcularor of Calcularor app",
 };
 
 const page = () => {
 	return (
-		<section className="grid h-[90dvh] place-items-center">
-			<div className="space-y-2 text-center">
-				<h1 className="text-5xl font-semibold">Nextjs Starter Frontend</h1>
-				<h2 className="text-3xl">Production grade Next.js starter template</h2>
-			</div>
+		<section className="grid h-[95dvh] place-items-center">
+			<Card className="">
+				<CardHeader className="">
+					<CardTitle className="text-center text-2xl font-semibold">
+						Basic Calculator
+					</CardTitle>
+				</CardHeader>
+
+				<BasicCalculator />
+			</Card>
 		</section>
 	);
 };
