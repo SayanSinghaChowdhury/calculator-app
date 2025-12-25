@@ -1,9 +1,9 @@
-import BasicCalculator from "@/components/BasicCalculator";
+import AdvanceCalculator from "@/components/AdvanceCalculator";
 import { Card, CardHeader, CardTitle } from "@/components/shadcnui/card";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "calculator-app",
+	title: "Advance-app",
 	description: "Basic Calcularor of Calcularor app",
 };
 
@@ -11,13 +11,10 @@ const page = () => {
 	return (
 		<section className="grid h-[95dvh] place-items-center">
 			<Card>
-				<CardHeader>
-					<CardTitle className="text-center text-2xl font-semibold">
-						Basic Calculator
-					</CardTitle>
+				<CardHeader className="text-center text-2xl font-semibold">
+					<CardTitle>Advance Calculator</CardTitle>
 				</CardHeader>
-
-				<BasicCalculator />
+				<AdvanceCalculator />
 			</Card>
 		</section>
 	);
