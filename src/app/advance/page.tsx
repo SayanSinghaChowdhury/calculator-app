@@ -14,6 +14,7 @@ const page = () => {
 				<CardHeader className="text-center text-2xl font-semibold">
 					<CardTitle>Advance Calculator</CardTitle>
 				</CardHeader>
+
 				<AdvanceCalculator />
 			</Card>
 		</section>

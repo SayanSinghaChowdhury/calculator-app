@@ -10,51 +10,106 @@ const BasicCalculator = () => {
 	const [inputTwo, setInputTwo] = useState("");
 	const [inputTotal, setInputTotal] = useState("");
 
-	const applyPlus = () => {};
+	const applyPlus = () => {
+		const numOne = parseInt(inputOne);
+		const numTwo = parseInt(inputTwo);
+		const add = numOne + numTwo;
 
-	const applyMinus = () => {};
+		setInputTotal(add.toString());
+		setInputOne("");
+		setInputTwo("");
+	};
 
-	const applyMultiply = () => {};
+	const applyMinus = () => {
+		const numOne = parseInt(inputOne);
+		const numTwo = parseInt(inputTwo);
 
-	const applyDivide = () => {};
+		const minus = numOne - numTwo;
 
-	const applyReset = () => {};
+		setInputTotal(minus.toString());
+		setInputOne("");
+		setInputTwo("");
+	};
+
+	const applyMultiply = () => {
+		const numOne = parseInt(inputOne);
+		const numTwo = parseInt(inputTwo);
+		const multiply = numOne * numTwo;
+
+		setInputTotal(multiply.toString());
+		setInputOne("");
+		setInputTwo("");
+	};
+
+	const applyDivide = () => {
+		const numOne = parseInt(inputOne);
+		const numTwo = parseInt(inputTwo);
+
+		const divide = numOne / numTwo;
+
+		setInputTotal(divide.toString());
+
+		setInputOne("");
+		setInputTwo("");
+	};
+
+	const applyReset = () => {
+		setInputOne("");
+		setInputTwo("");
+		setInputTotal("");
+	};
 
 	return (
 		<>
+			{/* connect with tags */}
+
 			<CardContent className="grid grid-cols-4 gap-6">
 				<Input
+					type="number"
 					className="col-span-2"
+					value={inputOne}
 					placeholder="Number 1 "
 					onChange={({ target }) => setInputOne(target.value)}
 				/>
+
 				<Input
+					type="number"
 					className="col-span-2"
+					value={inputTwo}
 					placeholder="Number 2"
 					onChange={({ target }) => setInputTwo(target.value)}
 				/>
 
 				<Input
 					className="col-span-4"
+					value={inputTotal}
 					onChange={({ target }) => setInputTotal(target.value)}
+					disabled={inputTotal.length <= 0}
 				/>
 
 				<Button
+					disabled={inputOne === "" || inputTwo === ""}
 					className="cursor-pointer"
 					onClick={applyPlus}>
 					Add +
 				</Button>
+
 				<Button
+					disabled={inputOne === "" || inputTwo === ""}
 					className="cursor-pointer"
 					onClick={applyMinus}>
 					Subtract -
 				</Button>
+
 				<Button
+					disabled={inputOne === "" || inputTwo === ""}
 					className="cursor-pointer"
 					onClick={applyMultiply}>
-					multiply X
+					Multiply X
 				</Button>
+
 				<Button
+					disabled={inputOne === "" || inputTwo === ""}
 					className="cursor-pointer"
 					onClick={applyDivide}>
 					Divide /
@@ -63,7 +118,7 @@ const BasicCalculator = () => {
 				<Button
 					variant={"destructive"}
 					onClick={applyReset}
-					disabled
+					disabled={inputTotal.length <= 0}
 					className="col-span-4 cursor-pointer">
 					Reset
 				</Button>
