@@ -117,12 +117,13 @@ const AdvanceCalculator = () => {
 				/>
 				<Button
 					onClick={calculationManegenent}
+					disabled={inputOne === "" || inputTwo === ""}
 					className="col-span-1 w-full cursor-pointer">
 					Calculate
 				</Button>
 				<Button
 					onClick={clear}
-					disabled={inputTotal.length <= 0}
+					disabled={inputOne === "" && inputTwo === "" && inputTotal === ""}
 					className="col-span-3 w-full cursor-pointer"
 					variant={"destructive"}>
 					Reset

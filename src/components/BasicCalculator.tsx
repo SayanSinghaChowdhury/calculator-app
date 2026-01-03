@@ -118,7 +118,7 @@ const BasicCalculator = () => {
 				<Button
 					variant={"destructive"}
 					onClick={applyReset}
-					disabled={inputTotal.length <= 0}
+					disabled={inputOne === "" && inputTwo === "" && inputTotal === ""}
 					className="col-span-4 cursor-pointer">
 					Reset
 				</Button>
