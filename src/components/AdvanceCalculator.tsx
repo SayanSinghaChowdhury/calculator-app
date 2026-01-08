@@ -19,49 +19,40 @@ const AdvanceCalculator = () => {
 
 	const [inputTotal, setInputTotal] = useState("");
 
-	const [selectOporator, setselectOporator] = useState("");
+	const [selectOporator, setSelectOporator] = useState("");
+
+	{
+		/* SELECT  value use on switch case : */
+	}
 
 	const calculationManegenent = () => {
+		/* TYPE CONVERTING FOR CONVERT STRING TO NUBER : */
 		const numOne = parseInt(inputOne);
 		const numTwo = parseInt(inputTwo);
-
+		// USE toString() for converting to number to string
 		switch (selectOporator) {
-			case "Add":
+			case "add":
 				setInputTotal((numOne + numTwo).toString());
-				setInputOne("");
 
-				setInputTwo("");
-
-				setselectOporator("");
 				break;
-			case "Subtract":
+			case "subtract":
 				setInputTotal((numOne - numTwo).toString());
-				setInputOne("");
 
-				setInputTwo("");
-
-				setselectOporator("");
 				break;
 			case "multiply":
 				setInputTotal((numOne * numTwo).toString());
-				setInputOne("");
 
-				setInputTwo("");
-
-				setselectOporator("");
 				break;
-			case "Divide":
+			case "divide":
 				setInputTotal((numOne / numTwo).toString());
-				setInputOne("");
 
-				setInputTwo("");
-
-				setselectOporator("");
-				break;
-
-			default:
 				break;
 		}
+		setInputOne("");
+
+		setInputTwo("");
+
+		setSelectOporator("");
 	};
 
 	const clear = () => {
@@ -69,67 +60,64 @@ const AdvanceCalculator = () => {
 
 		setInputTwo("");
 
-		setselectOporator("");
+		setSelectOporator("");
 
 		setInputTotal("");
 	};
 
 	return (
-		<>
-			{/* ADVANCE UI  */}
-			<CardContent className="grid grid-cols-3 place-items-center gap-4">
-				<Input
-					type="number"
-					className="col-span-1"
-					value={inputOne}
-					placeholder="Number 1"
-					onChange={({ target }) => setInputOne(target.value)}
-				/>
-				{/* SELECT PROCESS */}
-				<Select
-					onValueChange={(target) => setselectOporator(target)}
-					value={selectOporator}>
-					<SelectTrigger className="w-full">
-						<SelectValue placeholder="Operator" />
-					</SelectTrigger>
+		<CardContent className="grid grid-cols-3 place-items-center gap-5">
+			<Input
+				type="number"
+				className="col-span-1"
+				value={inputOne}
+				placeholder="Number 1"
+				onChange={({ target }) => setInputOne(target.value)}
+			/>
+			{/* SELECT PROCESS */}
+			<Select
+				onValueChange={(target) => setSelectOporator(target)}
+				value={selectOporator}>
+				<SelectTrigger className="w-full">
+					<SelectValue placeholder="Operator" />
+				</SelectTrigger>
 
-					<SelectContent onClick={calculationManegenent}>
-						<SelectItem value="Add">Add + </SelectItem>
-						<SelectItem value="Subtract">Subtract - </SelectItem>
-						<SelectItem value="multiply">multiply X </SelectItem>
-						<SelectItem value="Divide">Divide / </SelectItem>
-					</SelectContent>
-				</Select>
+				<SelectContent>
+					<SelectItem value="add"> + </SelectItem>
+					<SelectItem value="subtract"> - </SelectItem>
+					<SelectItem value="multiply"> X </SelectItem>
+					<SelectItem value="divide"> / </SelectItem>
+				</SelectContent>
+			</Select>
 
-				<Input
-					type="number"
-					className="col-span-1"
-					value={inputTwo}
-					placeholder="Number 2"
-					onChange={({ target }) => setInputTwo(target.value)}
-				/>
-				<Input
-					className="l col-span-2"
-					placeholder="Toatal"
-					value={inputTotal}
-					disabled={inputTotal.length <= 0}
-					onChange={({ target }) => setInputTotal(target.value)}
-				/>
-				<Button
-					onClick={calculationManegenent}
-					disabled={inputOne === "" || inputTwo === ""}
-					className="col-span-1 w-full cursor-pointer">
-					Calculate
-				</Button>
-				<Button
-					onClick={clear}
-					disabled={inputOne === "" && inputTwo === "" && inputTotal === ""}
-					className="col-span-3 w-full cursor-pointer"
-					variant={"destructive"}>
-					Reset
-				</Button>
-			</CardContent>
-		</>
+			<Input
+				type="number"
+				className="col-span-1"
+				value={inputTwo}
+				placeholder="Number 2"
+				onChange={({ target }) => setInputTwo(target.value)}
+			/>
+			<Input
+				className="l col-span-2"
+				placeholder="Toatal"
+				value={inputTotal}
+				disabled={inputTotal.length <= 0}
+				onChange={({ target }) => setInputTotal(target.value)}
+			/>
+			<Button
+				onClick={calculationManegenent}
+				disabled={inputOne === "" || inputTwo === ""}
+				className="col-span-1 w-full cursor-pointer">
+				Calculate
+			</Button>
+			<Button
+				onClick={clear}
+				disabled={inputOne === "" && inputTwo === "" && inputTotal === ""}
+				className="col-span-3 w-full cursor-pointer"
+				variant={"destructive"}>
+				Reset
+			</Button>
+		</CardContent>
 	);
 };
 
